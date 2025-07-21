@@ -1,11 +1,11 @@
 
-const fs=require('fs')
+import * as fs from 'node:fs';
 // const express=require('express')
-var http = require('http')
+import * as http from 'node:http';
 
 
 let mess=[]
-fs.readFile(`${__dirname}/message.json`,"utf8",(err,data)=>{
+fs.readFile(`message.json`,"utf8",(err,data)=>{
     if(err){
         console.error("failed to get error ",err);
     }else{
@@ -22,7 +22,19 @@ const server=http.createServer( (req, res) => {
         let rnd=Math.floor(Math.random()*mess.length)
         let mes=mess[rnd]
         res.end(JSON.stringify({"message":mes}));
-    }else{
+    }
+    else if(req.url=='/home'){
+        fs.readFile(`three.html`,"utf8",(err,data)=>{
+            if(err){
+                console.error("failed to get error ",err);
+            }else{
+                // res.writeHead(200, { 'Content-Type': 'text/html' });
+                 res.end(data);
+            }
+        });
+    }
+    else
+    {
 
         res.end("opps page not found");
     }

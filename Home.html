@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Artistic Landing Page</title>
+  <style>
+    /* Reset & Base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      background: radial-gradient(circle at center, #1f1c2c, #928dab);
+      overflow: hidden;
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      position: relative;
+    }
+
+    h1 {
+      font-size: 4rem;
+      text-shadow: 0 0 10px #fff, 0 0 20px #ff00cc, 0 0 30px #3333ff;
+      animation: glow 2s infinite alternate;
+    }
+
+    p {
+      font-size: 1.5rem;
+      margin-top: 1rem;
+      text-align: center;
+      max-width: 600px;
+      opacity: 0.8;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 10px #fff, 0 0 20px #ff00cc, 0 0 30px #3333ff;
+      }
+      to {
+        text-shadow: 0 0 20px #fff, 0 0 30px #ff00cc, 0 0 40px #3333ff;
+      }
+    }
+
+    .trail {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: white;
+      border-radius: 50%;
+      pointer-events: none;
+      box-shadow: 0 0 10px white;
+      animation: fadeOut 1s forwards;
+    }
+
+    @keyframes fadeOut {
+      to {
+        opacity: 0;
+        transform: scale(0.5);
+      }
+    }
+
+    .blast {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #ff00cc, #3333ff);
+      pointer-events: none;
+      animation: blastAnim 0.6s ease-out forwards;
+    }
+
+    @keyframes blastAnim {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(10);
+        opacity: 0;
+      }
+    }
+
+    footer {
+      position: absolute;
+      bottom: 20px;
+      font-size: 0.9rem;
+      opacity: 0.6;
+    }
+  </style>
+</head>
+<body>
+  <h1>Welcome to the Future</h1>
+  <p>Experience the fusion of art and technology. Move your mouse, click around, and let the page come alive.</p>
+  <footer>© 2025 Artistic Vibes Inc.</footer>
+
+  <script>
+    // Mouse trail effect
+    document.addEventListener('mousemove', (e) => {
+      const trail = document.createElement('div');
+      trail.className = 'trail';
+      trail.style.left = `${e.pageX}px`;
+      trail.style.top = `${e.pageY}px`;
+      document.body.appendChild(trail);
+      setTimeout(() => trail.remove(), 1000);
+    });
+
+    // Click blast effect
+    document.addEventListener('click', (e) => {
+      const blast = document.createElement('div');
+      blast.className = 'blast';
+      blast.style.left = `${e.pageX - 10}px`;
+      blast.style.top = `${e.pageY - 10}px`;
+      document.body.appendChild(blast);
+      setTimeout(() => blast.remove(), 600);
+    });
+  </script>
+</body>
+</html>

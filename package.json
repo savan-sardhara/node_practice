@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type" : "module",
   "scripts": {
     "start": "nodemon index.js"
   },
@@ -19,7 +20,8 @@
   "homepage": "https://github.com/savan-sardhara/node_practice#readme",
   "dependencies": {
     "express": "^5.1.0",
-    "mongodb": "^6.17.0"
+    "mongodb": "^6.17.0",
+    "three": "^0.178.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.10"
